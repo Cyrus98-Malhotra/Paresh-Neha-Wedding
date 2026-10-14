@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Paresh &amp; Neha's Wedding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Marcellus&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --heading: "Cinzel", Georgia, serif;
+    --subheading: "Marcellus", Georgia, serif;
+    --body: "Montserrat", system-ui, -apple-system, sans-serif;
+
+    /* Primary Palette: Burgundy, Warm Beige & Shimmering Royal Gold */
+    --burgundy-deep: #26050b;
+    --burgundy-rich: #480a15;
+    --burgundy-card: rgba(46, 7, 14, 0.78);
+    --burgundy-glow: rgba(138, 22, 42, 0.45);
+
+    --beige-light: #fdfaf3;
+    --beige-warm: #f2e7d5;
+    --beige-muted: #d9c8b0;
+
+    --gold: #d4af37;
+    --gold-bright: #f3e5ab;
+    --gold-glow: rgba(212, 175, 55, 0.4);
+    --gold-foil: linear-gradient(135deg, #bf953f 0%, #fcf6ba 30%, #b38728 55%, #fbf5b7 85%, #aa771c 100%);
+    --gold-border: rgba(212, 175, 55, 0.48);
+
+    /* Form Tokens */
+    --rsvp-bg: #fdfaf3;
+    --rsvp-fg: #2c070c;
+    --rsvp-muted: #6e434b;
+    --rsvp-field: #ffffff;
+    --rsvp-line: #d8c3ad;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    height: 100%;
+    scroll-snap-type: y mandatory;
+    scroll-padding-top: env(safe-area-inset-top, 0px);
+    background: var(--burgundy-deep);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--burgundy-deep);
+    color: var(--beige-light);
+    font-family: var(--body);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  /* Floating Golden Sparkle Canvas */
+  #particles-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 4;
+  }
+
+  /* ---------- Section Setup ---------- */
+  .panel {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    scroll-snap-align: start;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:
+      calc(env(safe-area-inset-top, 0px) + 3rem)
+      clamp(1.5rem, 6vw, 5rem)
+      calc(env(safe-area-inset-bottom, 0px) + 3rem)
+      clamp(1.5rem, 6vw, 5rem);
+  }
+
+  /* Animated Realistic Backgrounds (Palaces, Walkways & Mandaps) */
+  .bg-container {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .bg-image {
+    position: absolute;
+    inset: -7%;
+    width: 114%;
+    height: 114%;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.62) contrast(1.15) saturate(1.15);
+    transform: scale(1);
+    animation: royalPan 30s ease-in-out infinite alternate;
+  }
+
+  .panel:nth-child(even) .bg-image {
+    animation-direction: alternate-reverse;
+  }
+
+  @keyframes royalPan {
+    0% { transform: scale(1) translate(0, 0); }
+    50% { transform: scale(1.08) translate(-1.5%, 1%); }
+    100% { transform: scale(1.15) translate(1.5%, -1%); }
+  }
+
+  /* Deep Burgundy Radial Vignette with Warm Beige Glow */
+  .bg-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      radial-gradient(ellipse at 50% 50%, rgba(72, 10, 21, 0.45) 0%, rgba(25, 4, 8, 0.88) 100%),
+      linear-gradient(180deg, rgba(20, 3, 6, 0.72) 0%, rgba(60, 8, 17, 0.35) 50%, rgba(20, 3, 6, 0.85) 100%);
+    pointer-events: none;
+  }
+
+  .inner {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 74rem;
+    margin: 0 auto;
+  }
+
+  /* ---------- Regal Burgundy & Gold Cards ---------- */
+  .royal-card {
+    background: var(--burgundy-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1.5px solid var(--gold-border);
+    border-radius: 20px;
+    padding: clamp(2rem, 5vw, 4rem);
+    box-shadow:
+      0 0 0 1px rgba(242, 231, 213, 0.12) inset,
+      0 12px 35px rgba(0, 0, 0, 0.55),
+      0 0 25px rgba(212, 175, 55, 0.18);
+    position: relative;
+  }
+
+  /* Filigree Corner Accents */
+  .royal-card::before, .royal-card::after {
+    content: "";
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    pointer-events: none;
+    border-color: var(--gold);
+    border-style: solid;
+  }
+  .royal-card::before {
+    top: 10px; left: 10px;
+    border-width: 2px 0 0 2px;
+  }
+  .royal-card::after {
+    bottom: 10px; right: 10px;
+    border-width: 0 2px 2px 0;
+  }
+
+  /* ---------- Typography & Accents ---------- */
+  .gold-foil-text {
+    background: var(--gold-foil);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+  }
+
+  .orn {
+    display: block;
+    width: 9.5rem;
+    height: 1.25rem;
+    margin: 1.25rem 0;
+  }
+  .orn path, .orn circle { stroke: var(--gold); fill: none; stroke-width: 1.3; }
+  .orn .dia { fill: var(--gold); }
+
+  /* Content Animations */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--d, 0s);
+  }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .bg-image { animation: none !important; }
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+
+  /* ---------- Hero Section ---------- */
+  .hero .inner {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.7;
+  }
+  .hero .welcome-badge {
+    font-family: var(--subheading);
+    letter-spacing: 0.3em;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+  .hero .names {
+    font-family: var(--heading);
+    font-size: clamp(3.2rem, 8.5vw, 6.8rem);
+    line-height: 1.05;
+    letter-spacing: 0.05em;
+    margin: 0;
+    text-transform: uppercase;
+  }
+  .hero .names span { display: block; }
+  .hero .names .amp {
+    font-family: var(--subheading);
+    font-style: italic;
+    font-size: 0.65em;
+    vertical-align: middle;
+    margin: 0 0.25em;
+    -webkit-text-fill-color: var(--beige-warm);
+  }
+  .hero .lead {
+    font-family: var(--subheading);
+    font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+    color: var(--beige-warm);
+    margin: 0;
+    max-width: 44ch;
+    font-weight: 400;
+  }
+  .hero .meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem 2.2rem;
+    margin: 1.6rem 0 0;
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--beige-light);
+  }
+  .hero .meta .count {
+    color: var(--gold-bright);
+    padding: 0.2rem 1.1rem;
+    border: 1px solid var(--gold);
+    border-radius: 999px;
+    background: rgba(212, 175, 55, 0.12);
+  }
+  .hero .cue {
+    margin: 2rem 0 0;
+    font-size: 0.85rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-bright);
+    font-weight: 600;
+    opacity: 0.9;
+  }
+
+  /* ---------- Event Panels ---------- */
+  .event .inner {
+    display: grid;
+    gap: 2.5rem;
+    align-items: center;
+    opacity: 0.7;
+  }
+  @media (min-width: 880px) {
+    .event .inner { grid-template-columns: 1.25fr 1fr; gap: 4.5rem; }
+  }
+  .event .when {
+    margin: 0 0 0.5rem;
+    font-weight: 700;
+    color: var(--gold-bright);
+    font-size: 1.05rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .event h2 {
+    font-family: var(--heading);
+    font-size: clamp(2.6rem, 6.5vw, 5.2rem);
+    line-height: 1.05;
+    margin: 0;
+    text-transform: uppercase;
+  }
+  .event .blurb {
+    margin: 0;
+    font-size: 1.15rem;
+    color: var(--beige-warm);
+    font-weight: 300;
+  }
+
+  .details {
+    margin: 0;
+    background: rgba(30, 4, 9, 0.72);
+    border: 1.5px solid var(--gold-border);
+    border-radius: 14px;
+    padding: 1.6rem 2.2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
+  .details > div {
+    padding: 0.9rem 0;
+    border-top: 1px dashed rgba(212, 175, 55, 0.3);
+  }
+  .details > div:first-child { border-top: none; }
+  .details dt {
+    font-size: 0.8rem;
+    color: var(--gold-bright);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 700;
+  }
+  .details dd {
+    margin: 0.2rem 0 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--beige-light);
+  }
+
+  /* ---------- RSVP Panel (Beige Parchment Card) ---------- */
+  .rsvp .inner.card {
+    background: var(--rsvp-bg);
+    color: var(--rsvp-fg);
+    border: 2px solid var(--gold);
+    box-shadow:
+      0 0 35px rgba(212, 175, 55, 0.3),
+      0 20px 50px rgba(0, 0, 0, 0.65);
+  }
+  .rsvp .inner { display: grid; gap: 2.5rem; }
+  @media (min-width: 900px) {
+    .rsvp .inner { grid-template-columns: 1fr 1.25fr; gap: 4.5rem; align-items: start; }
+    .rsvp .intro { position: sticky; top: 2rem; }
+  }
+  .rsvp h2 {
+    font-family: var(--heading);
+    font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+    line-height: 1.1;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+  }
+  .rsvp .intro p {
+    margin: 0;
+    max-width: 32ch;
+    color: var(--rsvp-muted);
+    font-size: 1.1rem;
+  }
+
+  form { display: grid; gap: 1.4rem; max-width: 38rem; }
+  fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+  legend, label.lbl {
+    font-weight: 700;
+    font-size: 0.88rem;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--burgundy-rich);
+    display: block;
+  }
+  input[type="text"], input[type="number"], textarea {
+    width: 100%;
+    font: inherit;
+    color: var(--rsvp-fg);
+    background: var(--rsvp-field);
+    border: 1.5px solid var(--rsvp-line);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  input[type="text"]:focus, input[type="number"]:focus, textarea:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
+    outline: none;
+  }
+  input[type="number"] { max-width: 8rem; }
+  textarea { min-height: 5.5rem; resize: vertical; }
+
+  .choices { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .choice { position: relative; }
+  .choice input {
+    position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer;
+  }
+  .choice span {
+    display: inline-block;
+    padding: 0.55rem 1.1rem;
+    border: 1.5px solid var(--rsvp-line);
+    border-radius: 999px;
+    background: var(--rsvp-field);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--burgundy-rich);
+    transition: all 0.2s ease;
+  }
+  .choice input:checked + span {
+    background: var(--burgundy-rich);
+    border-color: var(--burgundy-rich);
+    color: var(--beige-light);
+    box-shadow: 0 4px 12px rgba(72, 10, 21, 0.35);
+  }
+
+  /* Burgundy CTA Buttons with Shimmering Gold Borders */
+  .actions { display: flex; flex-wrap: wrap; gap: 0.85rem; align-items: center; margin-top: 0.5rem; }
+  .btn {
+    font: inherit;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    padding: 0.9rem 1.8rem;
+    cursor: pointer;
+    border: 2px solid var(--gold);
+    background: linear-gradient(135deg, var(--burgundy-rich) 0%, var(--burgundy-deep) 100%);
+    color: var(--beige-light);
+    box-shadow: 0 4px 18px rgba(72, 10, 21, 0.45);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(72, 10, 21, 0.6), 0 0 14px rgba(212, 175, 55, 0.6);
+  }
+  .btn.ghost {
+    background: transparent;
+    color: var(--burgundy-rich);
+    border-color: var(--burgundy-rich);
+    box-shadow: none;
+  }
+  .btn.ghost:hover {
+    background: rgba(72, 10, 21, 0.08);
+    box-shadow: none;
+  }
+
+  .status { min-height: 1.5em; margin: 0; font-weight: 600; font-size: 0.95rem; white-space: pre-line; }
+  .status.err { color: #8b182b; }
+  .sign {
+    margin: 2.5rem 0 0;
+    color: var(--burgundy-rich);
+    font-family: var(--subheading);
+    font-size: 1.35rem;
+    font-weight: 600;
+  }
+  [hidden] { display: none !important; }
+
+  /* ---------- Side Nav Dots ---------- */
+  nav.dots {
+    position: fixed;
+    right: max(1.2rem, env(safe-area-inset-right, 0px));
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    color: var(--gold);
+  }
+  nav.dots ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  nav.dots button {
+    position: relative;
+    display: block;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+  }
+  nav.dots button::before {
+    content: "";
+    position: absolute;
+    inset: 7px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    transition: inset 0.25s, background 0.25s;
+    background: rgba(38, 5, 11, 0.6);
+  }
+  nav.dots button[aria-current="true"]::before {
+    inset: 4px;
+    background: var(--gold);
+    box-shadow: 0 0 12px var(--gold);
+  }
+  nav.dots button .tip {
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 6px;
+    background: var(--burgundy-deep);
+    border: 1px solid var(--gold);
+    color: var(--beige-light);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  @media (hover: hover) {
+    nav.dots button:hover .tip { opacity: 1; }
+  }
+</style>
+</head>
+<body>
+<canvas id="particles-canvas" aria-hidden="true"></canvas>
+<noscript><p style="color:#fff;padding:2rem">Please turn on JavaScript to view this invitation.</p></noscript>
+<main id="stage"></main>
+<nav class="dots" aria-label="Sections"><ul id="dots"></ul></nav>
+
+<script>
+/* ============================================================
+   ROYAL HINDU WEDDING CONFIGURATION
+   Burgundy & Gold Palace Architecture with Warm Beige Touches
+   ============================================================ */
+const CONFIG = {
+  couple: ["Paresh", "Neha"],
+  weddingDate: "2026-12-11T09:30:00+05:30",
+  dateLine: "11 December 2026",
+  place: "The Leela Palace, Bengaluru",
+  whatsapp: "",
+  email: "",
+  // Welcome: Grand Palace Facade illuminated with regal warm glow
+  hero: {
+    bgImage: "https://images.unsplash.com/photo-1590050752117-238cb0fb12b1?auto=format&fit=crop&w=2000&q=80"
+  },
+  events: [
+    {
+      name: "Mehendi",
+      day: "Wednesday, 9 December",
+      time: "4:00 PM onwards",
+      place: "Palace Verandah & Courtyard",
+      dress: "Beige, Ochre & Floral Festivities",
+      blurb: "Detailed henna artistry under marigold-draped canopies with folk music and royal chai.",
+      // Palace gardens and floral walkways
+      bgImage: "https://images.unsplash.com/photo-1585123388867-3bfe6dd4bdbf?auto=format&fit=crop&w=1920&q=80"
+    },
+    {
+      name: "Haldi",
+      day: "Thursday, 10 December",
+      time: "10:00 AM",
+      place: "Lotus Pool Courtyard",
+      dress: "Turmeric Yellow, Mustard & Warm Beige",
+      blurb: "Fragrant turmeric paste, floating brass urli blooms, and showers of fresh marigold petals.",
+      // Traditional urli, floating rose petals, and marigold flower decors
+      bgImage: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1920&q=80"
+    },
+    {
+      name: "Sangeet",
+      day: "Thursday, 10 December",
+      time: "7:30 PM",
+      place: "The Grand Darbar Hall",
+      dress: "Royal Burgundy & Gold Festive Attire",
+      blurb: "An evening of classic musical harmony, choreographed family performances, and lively celebration.",
+      // Palace illuminated carved pillars and majestic courtyards
+      bgImage: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1920&q=80"
+    },
+    {
+      name: "Vedic Vivaha & Muhurtham",
+      day: "Friday, 11 December",
+      time: "9:30 AM",
+      place: "Royal Mandapam, Palace Lawns",
+      dress: "Traditional Silk & Royal Sherwanis",
+      blurb: "The sacred Agni pradakshina, Kanyadaan, and Sapthapadi vows amidst the chanting of Vedic mantras.",
+      // Grand flower-draped royal walkway leading to the wedding mandap
+      bgImage: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=80"
+    },
+    {
+      name: "Royal Reception",
+      day: "Friday, 11 December",
+      time: "7:00 PM",
+      place: "Palace Ballroom & Terrace",
+      dress: "Black Tie or Regal Traditional",
+      blurb: "A grand imperial feast celebrating the newly married couple with toasts, dinner, and blessings.",
+      // Chandelier-lit royal banquet hall
+      bgImage: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1920&q=80"
+    }
+  ]
+};
+
+const ORNAMENT = `<svg class="orn" viewBox="0 0 160 16" aria-hidden="true">
+  <path d="M0 8H62M98 8H160"/><path class="dia" d="M80 1L87 8L80 15L73 8Z"/>
+  <circle cx="66" cy="8" r="1.8"/><circle cx="94" cy="8" r="1.8"/></svg>`;
+
+const stage = document.getElementById("stage");
+const dots = document.getElementById("dots");
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const [n1, n2] = CONFIG.couple;
+
+function countdownText() {
+  const ms = new Date(CONFIG.weddingDate) - Date.now();
+  if (isNaN(ms)) return "";
+  const days = Math.ceil(ms / 864e5);
+  if (ms < -864e5) return "Thank you for blessing the couple";
+  if (days <= 0) return "Auspicious Day is Today";
+  if (days === 1) return "1 day to go";
+  return days + " days to go";
+}
+
+// 1. Hero
+stage.insertAdjacentHTML("beforeend", `
+<section class="panel hero" id="welcome" data-label="Welcome">
+  <div class="bg-container">
+    <div class="bg-image" style="background-image: url('${CONFIG.hero.bgImage}')"></div>
+    <div class="bg-overlay"></div>
+  </div>
+  <div class="inner royal-card">
+    <span class="welcome-badge">|| Shubh Vivah ||</span>
+    <h1 class="names" aria-label="${esc(n1)} and ${esc(n2)}">
+      <span class="gold-foil-text">${esc(n1)} <span class="amp">&amp;</span> ${esc(n2)}</span>
+    </h1>
+    ${ORNAMENT}
+    <p class="lead">request the honour of your auspicious presence and blessings on their holy union.</p>
+    <p class="meta"><span>${esc(CONFIG.dateLine)} &bull; ${esc(CONFIG.place)}</span><span class="count">${esc(countdownText())}</span></p>
+    <p class="cue">Scroll to explore the ceremonies</p>
+  </div>
+</section>`);
+
+// 2. Events
+CONFIG.events.forEach((e, i) => {
+  stage.insertAdjacentHTML("beforeend", `
+<section class="panel event" id="event-${i}" data-label="${esc(e.name)}">
+  <div class="bg-container">
+    <div class="bg-image" style="background-image: url('${e.bgImage}')"></div>
+    <div class="bg-overlay"></div>
+  </div>
+  <div class="inner royal-card">
+    <div>
+      <p class="when">${esc(e.day)}</p>
+      <h2><span class="gold-foil-text">${esc(e.name)}</span></h2>
+      ${ORNAMENT}
+      <p class="blurb">${esc(e.blurb)}</p>
+    </div>
+    <dl class="details">
+      <div><dt>Muhurtham / Time</dt><dd>${esc(e.time)}</dd></div>
+      <div><dt>Sacred Venue</dt><dd>${esc(e.place)}</dd></div>
+      <div><dt>Suggested Attire</dt><dd>${esc(e.dress)}</dd></div>
+    </dl>
+  </div>
+</section>`);
+});
+
+// 3. RSVP Panel (Warm Beige Parchment inside Burgundy World)
+const eventChecks = CONFIG.events.map(e => `
+  <label class="choice"><input type="checkbox" name="events" value="${esc(e.name)}" checked><span>${esc(e.name)}</span></label>`).join("");
+
+stage.insertAdjacentHTML("beforeend", `
+<section class="panel rsvp" id="rsvp" data-label="RSVP">
+  <div class="bg-container">
+    <div class="bg-image" style="background-image: url('${CONFIG.hero.bgImage}')"></div>
+    <div class="bg-overlay"></div>
+  </div>
+  <div class="inner royal-card card">
+    <div class="intro">
+      <h2><span class="gold-foil-text">Will You Join Us?</span></h2>
+      ${ORNAMENT}
+      <p>Your presence is our family's greatest blessing. Kindly confirm your attendance by 15 November.</p>
+    </div>
+    <div>
+      <form id="rsvp-form" novalidate>
+        <div>
+          <label class="lbl" for="guest-name">Your Full Name</label>
+          <input type="text" id="guest-name" name="name" autocomplete="name" required placeholder="Guest Name">
+        </div>
+        <fieldset>
+          <legend>Can you make it?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="attending" value="Yes" checked><span>Yes, with blessings</span></label>
+            <label class="choice"><input type="radio" name="attending" value="No"><span>Regretfully decline</span></label>
+          </div>
+        </fieldset>
+        <div id="yes-only" style="display:grid;gap:1.4rem">
+          <div>
+            <label class="lbl" for="guests">Number of guests attending</label>
+            <input type="number" id="guests" name="guests" min="1" max="10" value="1" inputmode="numeric">
+          </div>
+          <fieldset>
+            <legend>Ceremonies you will attend</legend>
+            <div class="choices">${eventChecks}</div>
+          </fieldset>
+          <fieldset>
+            <legend>Traditional feast choice</legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="food" value="Pure Vegetarian" checked><span>Pure Vegetarian</span></label>
+              <label class="choice"><input type="radio" name="food" value="Jain Vegetarian"><span>Jain Vegetarian</span></label>
+            </div>
+          </fieldset>
+        </div>
+        <div>
+          <label class="lbl" for="note">Blessings / Wishes for the couple</label>
+          <textarea id="note" name="note" placeholder="Write your warm wishes..."></textarea>
+        </div>
+        <div class="actions">
+          <button type="button" class="btn" id="send-wa" ${CONFIG.whatsapp ? "" : "hidden"}>Send on WhatsApp</button>
+          <button type="button" class="btn" id="send-mail" ${CONFIG.email ? "" : "hidden"}>Send by Email</button>
+          <button type="button" class="btn ${(CONFIG.whatsapp || CONFIG.email) ? "ghost" : ""}" id="copy">Copy RSVP Details</button>
+        </div>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+      </form>
+      <p class="sign">With warm regards &amp; blessings,<br>${esc(n1)} &amp; ${esc(n2)} and Families</p>
+    </div>
+  </div>
+</section>`);
+
+/* ---------- Scroll Reveal & Navigation ---------- */
+const sections = [...document.querySelectorAll(".panel")];
+sections.forEach(sec => {
+  const sel = sec.classList.contains("hero") ? ".welcome-badge,.names,.orn,.lead,.meta,.cue"
+            : sec.classList.contains("event") ? ".when,h2,.orn,.blurb,.details"
+            : ".intro,form > *,.sign";
+  sec.querySelectorAll(sel).forEach((el, i) => {
+    el.classList.add("reveal");
+    el.style.setProperty("--d", Math.min(i * 0.12, 0.5) + "s");
+  });
+});
+
+if ("IntersectionObserver" in window) {
+  const rio = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add("in"); rio.unobserve(en.target); }
+    });
+  }, { rootMargin: "0px 0px -12% 0px", threshold: 0.1 });
+  document.querySelectorAll(".reveal").forEach(el => rio.observe(el));
+} else {
+  document.querySelectorAll(".reveal").forEach(el => el.classList.add("in"));
+}
+
+sections.forEach(sec => {
+  const li = document.createElement("li");
+  const b = document.createElement("button");
+  b.type = "button";
+  b.setAttribute("aria-label", "Go to " + sec.dataset.label);
+  b.innerHTML = `<span class="tip">${esc(sec.dataset.label)}</span>`;
+  b.addEventListener("click", () => sec.scrollIntoView({ block: "start" }));
+  li.appendChild(b);
+  dots.appendChild(li);
+});
+const dotBtns = [...dots.querySelectorAll("button")];
+
+function setActive(i) {
+  dotBtns.forEach((b, j) => b.setAttribute("aria-current", j === i ? "true" : "false"));
+}
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => { if (en.isIntersecting) setActive(sections.indexOf(en.target)); });
+}, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
+sections.forEach(s => io.observe(s));
+setActive(0);
+
+/* ---------- RSVP Form Dispatch ---------- */
+const form = document.getElementById("rsvp-form");
+const statusEl = document.getElementById("status");
+const yesOnly = document.getElementById("yes-only");
+
+form.addEventListener("change", () => {
+  yesOnly.hidden = form.elements.attending.value !== "Yes";
+});
+form.addEventListener("submit", e => e.preventDefault());
+
+function say(msg, isErr) {
+  statusEl.textContent = msg;
+  statusEl.classList.toggle("err", !!isErr);
+}
+
+function buildMessage() {
+  const f = form.elements;
+  const name = f.name.value.trim();
+  if (!name) { say("Please enter your name.", true); f.name.focus(); return null; }
+  const yes = f.attending.value === "Yes";
+  const lines = [`Wedding RSVP for ${n1} & ${n2}`, `Name: ${name}`, `Attending: ${yes ? "Yes" : "No"}`];
+  if (yes) {
+    const evs = [...form.querySelectorAll('input[name="events"]:checked')].map(c => c.value);
+    if (!evs.length) { say("Please choose at least one ceremony.", true); return null; }
+    lines.push(`Guests: ${f.guests.value || 1}`, `Ceremonies: ${evs.join(", ")}`, `Prasadam/Meal: ${f.food.value}`);
+  }
+  const note = f.note.value.trim();
+  if (note) lines.push(`Blessings: ${note}`);
+  return lines.join("\n");
+}
+
+function openLink(url) {
+  const a = document.createElement("a");
+  a.href = url; a.target = "_blank"; a.rel = "noopener";
+  document.body.appendChild(a); a.click(); a.remove();
+}
+
+document.getElementById("send-wa").addEventListener("click", () => {
+  const msg = buildMessage(); if (!msg) return;
+  openLink(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`);
+  say("WhatsApp is opening with your RSVP. Click send to finalize!");
+});
+document.getElementById("send-mail").addEventListener("click", () => {
+  const msg = buildMessage(); if (!msg) return;
+  openLink(`mailto:${CONFIG.email}?subject=${encodeURIComponent("Vivaha RSVP: " + form.elements.name.value.trim())}&body=${encodeURIComponent(msg)}`);
+  say("Email client opened. Click send to complete your RSVP!");
+});
+document.getElementById("copy").addEventListener("click", async () => {
+  const msg = buildMessage(); if (!msg) return;
+  try {
+    await navigator.clipboard.writeText(msg);
+    say("RSVP message successfully copied to clipboard!");
+  } catch (err) {
+    say("Could not copy automatically. Select and copy below:\n\n" + msg, true);
+  }
+});
+
+/* ---------- Floating Golden Shimmer Dust ---------- */
+(function() {
+  const canvas = document.getElementById("particles-canvas");
+  const ctx = canvas.getContext("2d");
+  let w, h;
+  const particles = [];
+  const COUNT = 36;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  }
+  window.addEventListener("resize", resize);
+  resize();
+
+  for (let i = 0; i < COUNT; i++) {
+    particles.push({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: Math.random() * 2.2 + 0.8,
+      dx: (Math.random() - 0.5) * 0.4,
+      dy: -(Math.random() * 0.4 + 0.2),
+      alpha: Math.random() * 0.6 + 0.2,
+      pulse: Math.random() * 0.02 + 0.005
+    });
+  }
+
+  function render() {
+    ctx.clearRect(0, 0, w, h);
+    for (let p of particles) {
+      p.y += p.dy;
+      p.x += p.dx;
+      p.alpha += Math.sin(Date.now() * p.pulse) * 0.008;
+
+      if (p.y < -10) { p.y = h + 10; p.x = Math.random() * w; }
+      if (p.x < -10) p.x = w + 10;
+      if (p.x > w + 10) p.x = -10;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(212, 175, 55, ${Math.max(0.15, Math.min(p.alpha, 0.75))})`;
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = "rgba(243, 229, 171, 0.8)";
+      ctx.fill();
+    }
+    requestAnimationFrame(render);
+  }
+  render();
+})();
+</script>
+</body>
+</html>
