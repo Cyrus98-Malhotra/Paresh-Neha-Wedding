@@ -27,7 +27,7 @@ body{font-family:var(--serif);color:var(--maroon);background:var(--white);overfl
 .hero.mkc .hero-content{ position: absolute; top: 120px }
 .hero.mkc .hero-bg{ background: url('./MataKiChowki.png'); background-size: cover; background-position-x: center;  background-position-y: center; }
 .hero.eng .hero-content{ position: absolute; top: 120px }
-.hero.eng .hero-bg{ background: url('./Engagement.png'); background-size: cover; background-position-x: center;  background-position-y: center; }
+.hero.eng .hero-bg{ background: url('./engagement.png'); background-size: cover; background-position-x: center;  background-position-y: center; }
 .hero.wed .hero-content h1, .hero.wed .hero-content p{ color: #bba422; }
 .hero.wed .hero-bg{ background: url('./wedding.png'); background-size: cover; background-position-x: center;  background-position-y: center; animation: none; }
 @keyframes zoom{0%{transform:scale(1)}50%{transform:scale(1.18)}100%{transform:scale(1)}}
