@@ -128,55 +128,121 @@ footer h2{font-family:var(--script);font-weight:400;font-size:clamp(32px,5.2vw,4
 footer p{font-family:var(--script);font-size:17px;color:var(--rose);margin-top:4px}
 
 .mata .top{
-  background: #fff;
+   background: #911b1b;
 }
 .mata .top h1, .mata .top h4, .mata .top p{
-  color: #AE4D2C;
+  color: #D4AA88;
+  font-family:var(--script);
+}
+.mata .top h1{
+  font-size: 34px;
+  font-weight: 100;
+}
+.mata .top .divider i, .mata .top .divider::before, .mata .top .divider::after{
+  background-color: #D4AA88;
+  margin: 10px
+}
+.mata .top .divider{
+  margin: 14px auto;
+}
+.mata .top p.subheading{
+  font-size: 26px;
+  margin-bottom: 20px;
 }
 .mata .top h4{
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
+  margin-bottom: 10px;
 }
 .mata .top p{
-  font-size: 20px;
+  font-size: 22px;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 .mata .top .btn{
-  background-color: #AE4D2C;
+  background-color: #D4AA88;
+    border-radius: 5px;
+    color: #911b1b;
+    font-family: var(--script);
+    font-size: 24px;
 }
 .engage .top{
-   background: #fff;
+   background: #09165d;
 }
 .engage .top h1, .engage .top h4, .engage .top p{
-  color: #09165d;
+  color: #D4AA88;
+  font-family:var(--script);
+}
+.engage .top h1{
+  font-size: 34px;
+  font-weight: 100;
+}
+.engage .top .divider i, .engage .top .divider::before, .engage .top .divider::after{
+  background-color: #D4AA88;
+  margin: 10px
+}
+.engage .top .divider{
+  margin: 14px auto;
+}
+.engage .top p.subheading{
+  font-size: 26px;
+  margin-bottom: 20px;
 }
 .engage .top h4{
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
+  margin-bottom: 10px;
 }
 .engage .top p{
-  font-size: 20px;
+  font-size: 22px;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 .engage .top .btn{
-  background-color: #09165d;
+  background-color: #D4AA88;
+    border-radius: 5px;
+    color: #09165d;
+    font-family: var(--script);
+    font-size: 24px;
 }
 .wedding .top{
-   background: #fff;
+  background: #fff;
 }
 .wedding .top h1, .wedding .top h4, .wedding .top p{
-  color: #B87B21;
+  color: #bb8050;
+  font-family:var(--script);
+}
+.wedding .top h1{
+  font-size: 34px;
+  font-weight: 100;
+}
+.wedding .top .divider i, .wedding .top .divider::before, .wedding .top .divider::after{
+  background-color: #bb8050;
+  margin: 10px
+}
+.wedding .top .divider{
+  margin: 14px auto;
+}
+.wedding .top p.subheading{
+  font-size: 26px;
+  margin-bottom: 20px;
 }
 .wedding .top h4{
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
+  margin-bottom: 10px;
 }
 .wedding .top p{
-  font-size: 20px;
+  font-size: 22px;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 .wedding .top .btn{
-  background-color: #B87B21;
+  background-color: #D4AA88;
+    border-radius: 5px;
+    color: #fff;
+    font-family: var(--script);
+    font-size: 24px;
 }
 /* ---------- Responsive ---------- */
 @media (min-width:900px){
