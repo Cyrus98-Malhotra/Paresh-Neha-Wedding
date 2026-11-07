@@ -9,8 +9,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Italianno&family=Rasa:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-<section class="top-header">
+<body class="locked">
+
+  <div id="stage" class="stage">
+  <div class="frame">
+    <button class="env" id="env">
+      <div class="inside"></div>
+      <div class="card"><b>Paresh &amp; Neha</b><i>are getting married</i><u>11 · 12 · 2026</u></div>
+      <div class="pocket slice"></div>
+      <div class="flap"><div class="slice"></div><div class="bk"></div></div>
+      <div class="seal"></div>
+      <div class="tap"></div>
+    </button>
+  </div>
+</div>
+
+<section id="site" class="top-header">
   <img src="./Ganesh.png">
   <p class="hero-sub">With the blessings of Late Shri Laxminarayan & Late Smt Savitridevi Madan, 
         Late Shri SP Malhotra & Late Smt Damyanti Malhotra, Late Shri Sumesh Madan</p>
@@ -163,6 +177,19 @@ wrap.addEventListener('pointermove', scratch);
 ['pointerup','pointercancel','pointerleave'].forEach(ev =>
   wrap.addEventListener(ev, () => down = false)
 );
+
+(function(){
+  var stage=document.getElementById('stage'),env=document.getElementById('env'),site=document.getElementById('site'),done=false;
+  function open(){
+    if(done)return;done=true;env.classList.add('open');
+    setTimeout(function(){env.classList.add('flipped')},750);
+    setTimeout(function(){
+      stage.classList.add('gone');site.classList.add('show');site.removeAttribute('aria-hidden');
+      document.body.classList.remove('locked');window.scrollTo(0,0);
+    },2800);
+  }
+  stage.addEventListener('click',open);
+})();
 </script>
 </body>
 </html>
