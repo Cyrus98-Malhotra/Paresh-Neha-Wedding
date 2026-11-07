@@ -263,8 +263,8 @@ footer p{font-family:var(--script);font-size:17px;color:var(--rose);margin-top:4
   background-size: cover;
 }
 .hero.bar .hero-sub{
-    font-size: clamp(32px, 3.6vw, 32px);
-    margin-top: 420px;
+    font-size: clamp(28px, 3.6vw, 32px);
+    margin-top: 370px;
 }
 /* ---------- Responsive ---------- */
 @media (min-width:900px){
