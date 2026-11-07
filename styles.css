@@ -27,7 +27,7 @@ body{font-family:var(--serif);color:var(--maroon);background:var(--white);overfl
 }
 .top-header .hero-sub{
   color: #B87B21;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
 }
 
@@ -58,7 +58,7 @@ body{font-family:var(--serif);color:var(--maroon);background:var(--white);overfl
 .hero-content{position:relative;padding:0 6%;max-width:640px}
 .hero-top{font-family:var(--script);font-size:clamp(30px,3.6vw,32px);opacity:.95}
 .hero h1{font-family:var(--script);font-weight:400;font-size:clamp(52px,10.5vw,96px);line-height:1.1;margin-top:clamp(52px,3vw,68px) 0;}
-.hero-sub{font-family:var(--script);font-size:clamp(26px,3.6vw,32px);line-height:1.35}
+.hero-sub{font-family:var(--script);font-size:clamp(30px,3.6vw,32px);line-height:1.35}
 .scroll-hint{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);font-family:var(--script);font-size:24px;display:flex;flex-direction:column;align-items:center;gap:2px}
 
 /* ---------- Shared ---------- */
@@ -261,6 +261,10 @@ footer p{font-family:var(--script);font-size:17px;color:var(--rose);margin-top:4
 .baraat .placeholder{
    background: url('./Baraat_setup.png');
   background-size: cover;
+}
+.hero.bar .hero-sub{
+    font-size: clamp(32px, 3.6vw, 32px);
+    margin-top: 420px;
 }
 /* ---------- Responsive ---------- */
 @media (min-width:900px){
