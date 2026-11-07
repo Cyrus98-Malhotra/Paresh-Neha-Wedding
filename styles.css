@@ -166,6 +166,10 @@ footer p{font-family:var(--script);font-size:17px;color:var(--rose);margin-top:4
     font-family: var(--script);
     font-size: 24px;
 }
+.mata .placeholder{
+  background: url('./Chowki_setup.png');
+  background-size: cover;
+}
 .engage .top{
    background: #ffebdb;
 }
@@ -205,6 +209,10 @@ footer p{font-family:var(--script);font-size:17px;color:var(--rose);margin-top:4
     font-family: var(--script);
     font-size: 24px;
 }
+.engage .placeholder{
+  background: url('./Sangeet_setup.png');
+  background-size: cover;
+}
 .wedding .top{
   background: #fff;
 }
@@ -243,6 +251,10 @@ footer p{font-family:var(--script);font-size:17px;color:var(--rose);margin-top:4
     color: #fff;
     font-family: var(--script);
     font-size: 24px;
+}
+.wedding .placeholder{
+  background: url('./Wedding_setup.png');
+  background-size: cover;
 }
 /* ---------- Responsive ---------- */
 @media (min-width:900px){
