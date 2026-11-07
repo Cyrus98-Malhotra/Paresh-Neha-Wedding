@@ -46,6 +46,8 @@ body{font-family:var(--serif);color:var(--maroon);background:var(--white);overfl
 .hero.mkc .hero-bg{ background: url('./MataKiChowki.png'); background-size: cover; background-position-x: center;  background-position-y: center; }
 .hero.eng .hero-content{ position: absolute; top: 120px }
 .hero.eng .hero-bg{ background: url('./engagement.png'); background-size: cover; background-position-x: center;  background-position-y: center; }
+.hero.bar .hero-bg{ background: url('./Baraat.png'); background-size: cover; background-position-x: center;  background-position-y: center; }
+.hero.bar .hero-overlay{background: linear-gradient(90deg,rgba(80,35,30,.85) 0,transparent 12%,transparent 88%,rgba(80,35,30,.85) 100%),linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.45));}
 .hero.wed .hero-content h1, .hero.wed .hero-content p{ color: #bba422; }
 .hero.wed .hero-bg{ background: url('./wedding.png'); background-size: cover; background-position-x: center;  background-position-y: center; animation: none; }
 @keyframes zoom{0%{transform:scale(1)}50%{transform:scale(1.18)}100%{transform:scale(1)}}
@@ -56,11 +58,11 @@ body{font-family:var(--serif);color:var(--maroon);background:var(--white);overfl
 .hero-content{position:relative;padding:0 6%;max-width:640px}
 .hero-top{font-family:var(--script);font-size:clamp(30px,3.6vw,32px);opacity:.95}
 .hero h1{font-family:var(--script);font-weight:400;font-size:clamp(52px,10.5vw,96px);line-height:1.1;margin-top:clamp(52px,3vw,68px) 0;}
-.hero-sub{font-family:var(--script);font-size:clamp(24px,3.6vw,32px);line-height:1.35}
+.hero-sub{font-family:var(--script);font-size:clamp(26px,3.6vw,32px);line-height:1.35}
 .scroll-hint{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);font-family:var(--script);font-size:24px;display:flex;flex-direction:column;align-items:center;gap:2px}
 
 /* ---------- Shared ---------- */
-.title{font-family:var(--script);font-weight:400;color:var(--rose);font-size:clamp(34px,6vw,48px);text-align:center;line-height:1.2}
+.title{font-family:var(--script);font-weight:400;color:var(--rose);font-size:clamp(44px,6vw,48px);text-align:center;line-height:1.2}
 .divider{display:flex;align-items:center;justify-content:center;gap:0;margin:14px auto 0;width:min(78%,520px)}
 .divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--rose)}
 .divider i{width:11px;height:11px;background:var(--rose);transform:rotate(45deg);margin:0 10px}
@@ -91,8 +93,8 @@ section{padding:clamp(48px,8vw,80px) 6%}
 
 /* ---------- Top ---------- */
 .top{background:linear-gradient(#f9d3dc 0,#fff 36%,#fff 62%,#fde4ea 100%);padding-bottom:clamp(40px,8vw,80px);text-align: center;}
-.top span.welcome{font-family:var(--script);color:var(--maroon);font-size:clamp(28px,5vw,40px);line-height:1.45;text-align:center;max-width:700px;}
-.top p{font-size:clamp(20px,5vw,40px);}
+.top span.welcome{font-family:var(--script);color:var(--maroon);font-size:clamp(34px,5vw,40px);line-height:1.45;text-align:center;max-width:700px;}
+.top p{font-size:clamp(24px,5vw,40px);}
 .scratch{position:relative;width:min(300px,70vw);aspect-ratio:300/270;margin:30px auto 0}
 .scratch canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:grab}
 .scratch-under{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--script);font-size:30px;color:var(--rose);text-align:center;padding:0 22%;line-height:1.1}
@@ -111,14 +113,14 @@ section{padding:clamp(48px,8vw,80px) 6%}
 .timeline li:last-child{margin-bottom:0}
 .timeline li::before{content:"";position:absolute;left:-26px;top:9px;width:9px;height:9px;border-radius:50%;background:var(--maroon)}
 .timeline h3{font-weight:500;font-size:clamp(24px,3.6vw,24px);color:var(--maroon);line-height:1.25}
-.timeline small{display:block;font-size:16px;color:var(--rose);line-height:1.45}
-.timeline p{font-size:16px;line-height:1.5;margin-top:8px;color:#2a0d15}
+.timeline small{display:block;font-size:20px;color:var(--rose);line-height:1.45}
+.timeline p{font-size:20px;line-height:1.5;margin-top:8px;color:#2a0d15}
 
 /* ---------- Venue / Transport / Footer ---------- */
 .venue{background:var(--pink);text-align:center}
 .venue h3{font-weight:500;font-size:clamp(22px,4vw,28px);margin:clamp(26px,5vw,38px) 0 14px;color:var(--maroon)}
 .venue p{font-size:14px;color:#2a0d15}
-.btn{display:inline-block;margin-top:clamp(20px,4vw,28px);background:var(--maroon);color:#fff;text-decoration:none;font-size:clamp(16px,4vw, 20px);padding:15px 30px;border-radius:0px;transition:background .2s}
+.btn{display:inline-block;margin-top:clamp(20px,4vw,28px);background:var(--maroon);color:#fff;text-decoration:none;font-size:clamp(20px,4vw, 20px);padding:15px 30px;border-radius:0px;transition:background .2s}
 .btn:hover,.btn:focus-visible{background:#8e1a38;outline:2px solid var(--rose);outline-offset:2px}
 .btn-sm{margin-top: 10px; padding: 10px 20px;}
 .transport{background:#fff;text-align:center;padding-bottom:clamp(60px,10vw,100px)}
@@ -150,12 +152,12 @@ footer p{font-family:var(--script);font-size:17px;color:var(--rose);margin-top:4
   margin-bottom: 20px;
 }
 .mata .top h4{
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 500;
   margin-bottom: 10px;
 }
 .mata .top p{
-  font-size: 22px;
+  font-size: 26px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -193,12 +195,12 @@ footer p{font-family:var(--script);font-size:17px;color:var(--rose);margin-top:4
   margin-bottom: 20px;
 }
 .engage .top h4{
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 500;
   margin-bottom: 10px;
 }
 .engage .top p{
-  font-size: 22px;
+  font-size: 26px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -236,12 +238,12 @@ footer p{font-family:var(--script);font-size:17px;color:var(--rose);margin-top:4
   margin-bottom: 20px;
 }
 .wedding .top h4{
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 500;
   margin-bottom: 10px;
 }
 .wedding .top p{
-  font-size: 22px;
+  font-size: 26px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -254,6 +256,10 @@ footer p{font-family:var(--script);font-size:17px;color:var(--rose);margin-top:4
 }
 .wedding .placeholder{
   background: url('./Wedding_setup.png');
+  background-size: cover;
+}
+.baraat .placeholder{
+   background: url('./Baraat_setup.png');
   background-size: cover;
 }
 /* ---------- Responsive ---------- */
