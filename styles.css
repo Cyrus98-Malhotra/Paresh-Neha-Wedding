@@ -50,6 +50,7 @@ body{font-family:var(--serif);color:var(--maroon);background:var(--white);overfl
 .hero.bar .hero-overlay{background: linear-gradient(90deg,rgba(80,35,30,.85) 0,transparent 12%,transparent 88%,rgba(80,35,30,.85) 100%),linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.45));}
 .hero.wed .hero-content h1, .hero.wed .hero-content p{ color: #bba422; }
 .hero.wed .hero-bg{ background: url('./wedding.png'); background-size: cover; background-position-x: center;  background-position-y: center; animation: none; }
+.hero.wed .hero-bg.bride{background: url('./wed-bg-bride.png'); background-size: cover; background-position-x: center;  background-position-y: center; animation: none;}
 @keyframes zoom{0%{transform:scale(1)}50%{transform:scale(1.18)}100%{transform:scale(1)}}
 .hero-overlay{position:absolute;inset:0;
   background:
